@@ -115,7 +115,8 @@ class _Product_ScreenState extends State<Product_Screen> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
+                                                  SizedBox(height: 10,),
+                                                  Text(overflow: TextOverflow.ellipsis,maxLines: 2,
                                                       "${productlist?[index].name[0].toUpperCase()}${productlist?[index].name.substring(1)}",
                                                       style: TextStyle(
                                                           fontSize: 15,
@@ -139,6 +140,7 @@ class _Product_ScreenState extends State<Product_Screen> {
                                                   fontSize: 25,
                                                   color: Colors.grey),
                                             ),
+                                            SizedBox(width: 10,),
                                             SizedBox(
                                                 height: 28,
                                                 child: ElevatedButton(
