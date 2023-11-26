@@ -2,6 +2,7 @@ import 'package:ezad_shopping/baseview.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../main.dart';
+import '../../provider/cart_provider.dart';
 import '../../provider/products_provider.dart';
 
 class Product_Screen extends StatefulWidget {
@@ -15,7 +16,6 @@ class _Product_ScreenState extends State<Product_Screen> {
   @override
   void initState() {
     // TODO: implement initState
-    box.clear();
     super.initState();
   }
 
@@ -58,24 +58,7 @@ class _Product_ScreenState extends State<Product_Screen> {
                             hintText: "Search",
                             hintStyle: MaterialStateProperty.all(
                                 TextStyle(color: Colors.grey)),
-                            trailing: [
-                              GestureDetector(
-                                  onTap: () async {
-                                    var result = await box.values.toList();
-                                    print(result);
-                                  },
-                                  child: Container(
-                                      height: 48,
-                                      width: 30,
-                                      child: Icon(
-                                        Icons.qr_code,
-                                        color: Colors.grey,
-                                        size: 28,
-                                      ))),
-                              SizedBox(
-                                width: 4,
-                              ),
-                            ]),
+                            ),
                       ),
                     ),
                     Expanded(
@@ -170,6 +153,8 @@ class _Product_ScreenState extends State<Product_Screen> {
                                                                     .price,
                                                             "qty": 1
                                                           });
+                                                      Provider.of<Cart_Provider>(context,listen: false).fetchCart(context);
+
                                                     },
                                                     child: Text("ADD")))
                                           ],

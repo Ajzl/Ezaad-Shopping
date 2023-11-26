@@ -131,7 +131,16 @@ class _Cart_Main_ScreenState extends State<Cart_Main_Screen> {
                       itemBuilder: (context, index) =>
                           Dismissible(key:UniqueKey(),
                             direction: DismissDirection.endToStart,
-                            background: Container(color: Colors.red,),
+                            background: Container(color: Colors.red,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 35.0),
+                                  child: Icon(Icons.delete_sweep_rounded,color: Colors.white,size: 30,),
+                                ),
+                              ],
+                            ),),
                             onDismissed: (DismissDirection endToStart){
                               box.deleteAt(index);
                               cartProvider
@@ -357,7 +366,7 @@ class _Cart_Main_ScreenState extends State<Cart_Main_Screen> {
                       ),
                     ),
                     SizedBox(
-                      height: 5,
+                      height: 12,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -365,8 +374,9 @@ class _Cart_Main_ScreenState extends State<Cart_Main_Screen> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Container(
-                              width:
-                              MediaQuery.of(context).size.width / 2.5,
+                              width: MediaQuery.of(context).size.width/1.5,
+                              height: MediaQuery.of(context).size.width / 9,
+
                               child: ElevatedButton(
                                   style: ButtonStyle(
                                       backgroundColor:
@@ -439,25 +449,9 @@ class _Cart_Main_ScreenState extends State<Cart_Main_Screen> {
                                               "Please add products to cart")));
                                   },
                                   child: Text(
-                                    "Order",
+                                    "Place Order",
                                     style: TextStyle(fontSize: 16),
                                   ))),
-                          Container(
-                              width:
-                              MediaQuery.of(context).size.width / 2.5,
-                              child: ElevatedButton(
-                                  style: ButtonStyle(
-                                      backgroundColor:
-                                      MaterialStateProperty.all(
-                                          Color(0xFF004D90)),
-                                      shape: MaterialStateProperty.all(
-                                          RoundedRectangleBorder(
-                                              borderRadius:
-                                              BorderRadius.circular(
-                                                  100)))),
-                                  onPressed: () {},
-                                  child: Text("Order & Deliver",
-                                      style: TextStyle(fontSize: 16)))),
                         ],
                       ),
                     ),
